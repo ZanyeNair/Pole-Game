@@ -1,9 +1,9 @@
 public class Main{
     public static void main(String[] args) {
-        String[] cars = {"Volvo", "BMW", "Ford"};
-        int length = cars.length;
-        for (int x = 0; x < length; x++){
-            System.out.println(cars[x]);
-        }
+        String[] colors = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"};
+        int[] size = {1, 2, 3, 4, 5, 6};
+        int[] pole1;
+        int[] pole2;
+        int[] pole3;
     }
 }
