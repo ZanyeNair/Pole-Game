@@ -9,30 +9,30 @@ public class pole{
             }
         }
     }
-    public void firstPole(int[] pole1, ArrayList<Integer> org, ArrayList<String> colors){
+    public void firstPole(ArrayList<Integer> pole1, ArrayList<Integer> org, ArrayList<String> colors){
     
-        for (int i = 0; i < pole1.length; i++){
+        for (int i = 0; i < pole1.size(); i++){
             this.checkSize(org, colors, i);
         }
         
     }
-    public void secondPole(int[] pole2, ArrayList<Integer> org, ArrayList<String> colors){
-        if (pole2.length == 0){
+    public void secondPole(ArrayList<Integer> pole2, ArrayList<Integer> org, ArrayList<String> colors){
+        if (pole2.size() == 0){
             System.out.println("This pole is empty");
         }
         else{
-            for (int i = 0; i < pole2.length; i++){
-                this.checkSize(org, colors, );
+            for (int i = 0; i < pole2.size(); i++){
+                this.checkSize(org, colors, i);
             }
         }
     
     }
-    public void thirdPole(int[] pole3, ArrayList<Integer> org, ArrayList<String> colors){
-        if (pole3.length == 0){
+    public void thirdPole(ArrayList<Integer> pole3, ArrayList<Integer> org, ArrayList<String> colors){
+        if (pole3.size() == 0){
             System.out.println("This pole is empty");
         }
         else{
-            for (int i = 0; i < pole3.length; i++){
+            for (int i = 0; i < pole3.size(); i++){
                 this.checkSize(org, colors, i);
             }
         }
@@ -71,17 +71,17 @@ public class pole{
             return 0;
         }
     }
-    public boolean movePole(int[] pole3, ArrayList<Integer> org, String[] colors, int[] pole1, int[] pole2, String colorMove, int poleMove, boolean moveTrue){
+    public boolean movePole(ArrayList<Integer> pole3, ArrayList<Integer> org, ArrayList<String> colors, ArrayList<Integer> pole1, ArrayList<Integer> pole2, String colorMove, int poleMove, boolean moveTrue){
         int numColor;
         numColor = this.getNumberVColor(colorMove);
         int poleStartOn;
-        if (pole1[0] == numColor){
+        if (pole1.get(0) == numColor){
             poleStartOn = 1;
         }
-        else if (pole2[0] == numColor){
+        else if (pole2.get(0) == numColor){
             poleStartOn = 2;
         }
-        else if (pole3[0] == numColor){
+        else if (pole3.get(0) == numColor){
             poleStartOn = 3;
         }
         else{
@@ -94,20 +94,53 @@ public class pole{
                 moveTrue = false;
                 return moveTrue;
             }
-            if(pole1[0] > numColor){
-                
+            if(pole1.get(0) > numColor){
+                pole2.remove(0);
+                pole1.set(0, numColor);
+            }
+            else if(pole1.get(0) > numColor){
+                pole3.remove(0);
+                pole1.set(0, numColor);
+            }
+            else{
+                moveTrue = false;
+                return moveTrue;
             }
             return moveTrue;
         }
         else if(poleMove == 2){
-            if(this.getNumberVColor(colorMove) == 0){
+            if(numColor == 0){
+                moveTrue = false;
+                return moveTrue;
+            }
+            if(pole2.get(0) > numColor){
+                pole1.remove(0);
+                pole2.set(0, numColor);
+            }
+            else if(pole2.get(0) > numColor){
+                pole3.remove(0);
+                pole2.set(0, numColor);
+            }
+            else{
                 moveTrue = false;
                 return moveTrue;
             }
             return moveTrue;
         }
         else if(poleMove == 3){
-            if(this.getNumberVColor(colorMove) == 0){
+            if(numColor == 0){
+                moveTrue = false;
+                return moveTrue;
+            }
+            if(pole3.get(0) > numColor){
+                pole2.remove(0);
+                pole3.set(0, numColor);
+            }
+            else if(pole3.get(0) > numColor){
+                pole1.remove(0);
+                pole1.set(0, numColor);
+            }
+            else{
                 moveTrue = false;
                 return moveTrue;
             }
