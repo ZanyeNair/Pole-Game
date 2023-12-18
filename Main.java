@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main{
+    
     public static void main(String[] args) {
         new int[] arr = {1,2,3};
         Methods n = new Methods;
